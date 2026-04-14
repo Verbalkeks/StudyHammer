@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS answer, question, question_type, category CASCADE;
+DROP TABLE IF EXISTS answer, question, question_type, subcategory, category CASCADE;
 
 create table category(
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -8,22 +8,25 @@ create table category(
 
 create table subcategory(
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    subcategory_name varchar(50),
-    subcategory_description varchar
+    cid int
+    subcategory_name varchar(50) NOT NULL,
+    subcategory_description varchar,
+    constraint subcategory_fk_category foreign key (cid) references category(id) ON DELETE SET NULL
 );
 
 create table question_type(
     id int id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    type_name varchar NOT NULL
+    question_type_name varchar NOT NULL
+    question_type_description varchar
 );
 
 create table question(
   id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  cid int NOT NULL,
+  cid int,
   scid int,
   qtid int NOT NULL,
   question_text varchar NOT NULL,
-  constraint question_fk_category foreign key (cid) references category(id),
+  constraint question_fk_category foreign key (cid) references category(id) ON DELETE SET NULL,
   constraint question_fk_subcategory foreign key (scid) references subcategory(id) ON DELETE SET NULL,
   constraint question_fk_type foreign key (qtid) references question_type(id) ON DELETE RESTRICT
 );
