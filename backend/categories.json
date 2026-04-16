@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Mathematik",
+    "description": "Alle Mathe-Themen",
+    "subcategories": [
+      { "name": "Algebra", "description": "Gleichungen etc." }
+    ],
+    "questions": [
+        {
+            "question": "Was ist 2x = 8?",
+            "questionType": "singleChoice",
+            "subcategory": { "name": "Algebra", "description": "Gleichungen etc." },
+            "answers": [
+                { "text": "x = 4", "isCorrect": true },
+                { "text": "x = 2", "isCorrect": false },
+                { "text": "x = 8", "isCorrect": false },
+                { "text": "x = 0", "isCorrect": false }
+            ]
+        },
+        {
+            "question": "Was ist 3x + 2 = 11?",
+            "questionType": "singleChoice",
+            "subcategory": { "name": "Algebra", "description": "Gleichungen etc." },
+            "answers": [
+                { "text": "x = 3", "isCorrect": true },
+                { "text": "x = 2", "isCorrect": false },
+                { "text": "x = 4", "isCorrect": false },
+                { "text": "x = 5", "isCorrect": false }
+            ]
+        }
+    ]
+  }
+]
