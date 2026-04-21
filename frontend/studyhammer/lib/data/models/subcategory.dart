@@ -1,19 +1,12 @@
 class Subcategory {
-  final String name;
-  final String description;
-
+  int? id;
+  int cid;
+  String subcategoryName;
+  String subcategoryDescription;
   Subcategory({
-    required this.name,
-    required this.description,
+    this.id,
+    required this.cid,
+    required this.subcategoryName,
+    required this.subcategoryDescription
   });
-
-  factory Subcategory.fromJson(Map<String, dynamic> json) => Subcategory(
-    name:        json['name'],
-    description: json['description'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'name':        name,
-    'description': description,
-  };
 }
