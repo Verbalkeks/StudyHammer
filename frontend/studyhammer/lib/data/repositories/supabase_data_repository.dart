@@ -46,7 +46,7 @@ class SupabaseDataRepository implements DataRepository {
       .from('question_type')
       .select('*')
       .order('id', ascending: true);
-    throw UnimplementedError();
+    return data.cast<Map<String, dynamic>>().map(QuestionType.fromJson).toList();
   }
 
   @override

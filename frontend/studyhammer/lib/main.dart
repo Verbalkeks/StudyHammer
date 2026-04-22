@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studyhammer/config/injection.dart';
 import 'package:studyhammer/config/supabase_config.dart';
-import 'package:studyhammer/data/repositories/data_repository.dart';
 import 'package:studyhammer/logic/category_cubit.dart';
 import 'package:studyhammer/presentation/app_shell.dart';
 import 'package:studyhammer/presentation/categories_screen.dart';
