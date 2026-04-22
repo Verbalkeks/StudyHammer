@@ -12,7 +12,6 @@ void configureDependencies() {
   getIt.registerLazySingleton<DataRepository>(
     () => SupabaseDataRepository(client),
   );
-
   getIt.registerLazySingleton(
     () => CategoryCubit(repo: getIt<DataRepository>())
   );

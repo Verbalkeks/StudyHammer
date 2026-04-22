@@ -31,9 +31,28 @@ class CategoriesScreen extends StatelessWidget {
             return ListView(
               children: state.categories
                   .map(
-                    (c) => ListTile(
-                      title: Text(c.categoryName),
-                      trailing: Text(c.categoryDescription),
+                    (c) => Card(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                c.categoryName,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                c.categoryDescription,
+                                style: TextStyle(color: Colors.grey[600]),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   )
                   .toList(),

@@ -2,6 +2,7 @@ import 'package:studyhammer/data/models/answer.dart';
 import 'package:studyhammer/data/models/category.dart';
 import 'package:studyhammer/data/models/question.dart';
 import 'package:studyhammer/data/models/question_type.dart';
+import 'package:studyhammer/data/models/quiz_object.dart';
 
 abstract class DataRepository {
   

@@ -15,10 +15,22 @@ class AppShell extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: Image.asset("assets/logo.png"),
-        ),
+        leading: isCurrentRoute("/home")
+            ? Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Image.asset("assets/logo.png"),
+              )
+            : IconButton(
+                icon: const Icon(Icons.arrow_back),
+                tooltip: 'Zurück',
+                onPressed: () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  } else {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  }
+                },
+              ),
         title: const Text("StudyHammer"),
         actions: [
           // Hamburger-Button rechts öffnet den endDrawer
@@ -43,7 +55,11 @@ class AppShell extends StatelessWidget {
               child: Text("Home"),
             ),
             TextButton(
-              onPressed: isCurrentRoute("/editor") ? null : () {Navigator.popAndPushNamed(context, "/editor");},
+              onPressed: isCurrentRoute("/editor")
+                  ? null
+                  : () {
+                      Navigator.popAndPushNamed(context, "/editor");
+                    },
               child: Text("Editor"),
             ),
             TextButton(

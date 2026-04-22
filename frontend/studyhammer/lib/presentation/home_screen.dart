@@ -6,6 +6,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child:ComingSoon());
+    return ListView(
+      children: [
+        const Card(
+          child: InkWell(
+            onTap: null,
+            child: Padding(padding: EdgeInsets.all(16), child: ComingSoon()),
+          ),
+        ),
+      ],
+    );
   }
 }

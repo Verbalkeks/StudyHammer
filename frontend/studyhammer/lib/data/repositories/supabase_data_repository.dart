@@ -17,7 +17,6 @@ class SupabaseDataRepository implements DataRepository {
 
     return data.cast<Map<String, dynamic>>().map(Category.fromJson).toList();
   }
-
   @override
   Future<List<Question>> loadQuestionsByCategory(int id) async {
     final List data = await _client
