@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:studyhammer/presentation/shared/coming_soon.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:studyhammer/config/injection.dart';
+import 'package:studyhammer/logic/category_cubit.dart';
+import 'package:studyhammer/logic/category_state.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(child:ComingSoon());
+    return BlocProvider.value(
+      value: getIt<CategoryCubit>()..onLoadAllCategorys(),
+      child: BlocBuilder<CategoryCubit, CategoryState>(
+        builder: (context, state) {
+          print('State: $state'); // ← temporär
+
+          if (state is CategoryStateLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is CategoryStateError) {
+            return Center(child: Text(state.message));
+          }
+          if (state is CategoryStateLoaded) {
+            print(
+              'Anzahl Kategorien: ${state.categories.length}',
+            ); // ← temporär
+            if (state.categories.isEmpty) {
+              return const Center(child: Text('Keine Kategorien vorhanden'));
+            }
+            return ListView(
+              children: state.categories
+                  .map(
+                    (c) => ListTile(
+                      title: Text(c.categoryName),
+                      trailing: Text(c.categoryDescription),
+                    ),
+                  )
+                  .toList(),
+            );
+          }
+          return const SizedBox();
+        },
+      ),
+    );
   }
 }

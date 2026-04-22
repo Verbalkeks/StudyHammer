@@ -13,7 +13,7 @@ class SupabaseDataRepository implements DataRepository {
     final List data = await _client
         .from('category')
         .select('*')
-        .order('name', ascending: true);
+        .order('category_name', ascending: true);
 
     return data.cast<Map<String, dynamic>>().map(Category.fromJson).toList();
   }

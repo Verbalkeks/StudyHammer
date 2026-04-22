@@ -13,7 +13,7 @@ class Category {
     return Category(
       id: json['id'] as int?,
       categoryName: json['category_name'] as String,
-      categoryDescription: json['categeroy_description']as String
+      categoryDescription: json['category_description']as String
     );
   }
 }
