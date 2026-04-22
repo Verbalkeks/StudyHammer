@@ -3,10 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studyhammer/config/injection.dart';
 import 'package:studyhammer/config/supabase_config.dart';
-import 'package:studyhammer/data/repositories/category_repository.dart';
+import 'package:studyhammer/data/repositories/data_repository.dart';
 import 'package:studyhammer/logic/category_cubit.dart';
-import 'package:studyhammer/presentation/home/home_screen.dart';
-import 'package:studyhammer/presentation/home/splash_screen.dart';
+import 'package:studyhammer/presentation/app_shell.dart';
+import 'package:studyhammer/presentation/categories_screen.dart';
+import 'package:studyhammer/presentation/editor_screen.dart';
+import 'package:studyhammer/presentation/home_screen.dart';
+import 'package:studyhammer/presentation/quizmode_screen.dart';
+import 'package:studyhammer/presentation/splash_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -70,7 +74,10 @@ class MyApp extends StatelessWidget {
         initialRoute: "/",
         routes:{  
         "/": (context) => const SplashScreen(),
-        "/home" : (context) => const HomeScreen(),
+        "/home" : (context) => AppShell(child: HomeScreen()),
+        "/editor" : (context) => AppShell(child: EditorScreen()),
+        "/categories":  (context) => AppShell(child: CategoriesScreen()),
+        "/quizmode":        (context) => AppShell(child: QuizmodeScreen()),
         }
       ),
     );

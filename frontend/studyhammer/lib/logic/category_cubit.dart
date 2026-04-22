@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:studyhammer/data/repositories/category_repository.dart';
+import 'package:studyhammer/data/repositories/data_repository.dart';
 import 'package:studyhammer/logic/category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState>{
-  final CategoryRepository repo;
+  final DataRepository repo;
   
   CategoryCubit({required this.repo}) : super(CategoryStateLoading());
 

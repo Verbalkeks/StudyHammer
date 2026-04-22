@@ -17,7 +17,7 @@ CREATE TABLE subcategory (
 CREATE TABLE question_type (
     id                       INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     question_type_name       VARCHAR NOT NULL,
-    question_type_description VARCHAR
+    question_type_description VARCHAR NOT NULL
 );
 
 CREATE TABLE question (

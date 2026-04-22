@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
-
 class Category {
   int? id;
   String categoryName;
   String categoryDescription;
+
   Category({
     this.id,
     required this.categoryName,
@@ -12,11 +11,9 @@ class Category {
 
   factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       categoryName: json['category_name'] as String,
-      categoryDescription: ['categeroy_description']as String
+      categoryDescription: json['categeroy_description']as String
     );
   }
-
-  
 }
