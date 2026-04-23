@@ -17,14 +17,4 @@ class CategoryCubit extends Cubit<CategoryState>{
       emit(CategoryStateError(message: e.toString()));
     }
   }
-  Future<void> onLoadQuestionsAndAnswersByCategory(int categoryId) async {
-    emit(CategoryStateLoading());
-    try {
-      final categories = await repo.loadAllCategorys();
-      emit(CategoryStateLoaded(categories: categories));
-    }
-    catch (e) {
-      emit(CategoryStateError(message: e.toString()));
-    }
-  }
 }

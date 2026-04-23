@@ -13,8 +13,6 @@ class CategoriesScreen extends StatelessWidget {
       value: getIt<CategoryCubit>()..onLoadAllCategorys(),
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
-          print('State: $state'); // ← temporär
-
           if (state is CategoryStateLoading) {
             return const Center(child: CircularProgressIndicator());
           }
@@ -22,9 +20,6 @@ class CategoriesScreen extends StatelessWidget {
             return Center(child: Text(state.message));
           }
           if (state is CategoryStateLoaded) {
-            print(
-              'Anzahl Kategorien: ${state.categories.length}',
-            ); // ← temporär
             if (state.categories.isEmpty) {
               return const Center(child: Text('Keine Kategorien vorhanden'));
             }
@@ -33,7 +28,13 @@ class CategoriesScreen extends StatelessWidget {
                   .map(
                     (c) => Card(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/category_detail',
+                            arguments: c,
+                          );
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Column(

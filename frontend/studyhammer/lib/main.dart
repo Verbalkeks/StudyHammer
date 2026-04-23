@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:studyhammer/config/injection.dart';
 import 'package:studyhammer/config/supabase_config.dart';
 import 'package:studyhammer/logic/category_cubit.dart';
+import 'package:studyhammer/data/models/category.dart';
 import 'package:studyhammer/presentation/app_shell.dart';
 import 'package:studyhammer/presentation/categories_screen.dart';
+import 'package:studyhammer/presentation/category_detail_screen.dart';
 import 'package:studyhammer/presentation/editor_screen.dart';
 import 'package:studyhammer/presentation/home_screen.dart';
 import 'package:studyhammer/presentation/quizmode_screen.dart';
@@ -71,13 +73,23 @@ class MyApp extends StatelessWidget {
           ),
         ),
         initialRoute: "/",
-        routes:{  
-        "/": (context) => const SplashScreen(),
-        "/home" : (context) => AppShell(child: HomeScreen()),
-        "/editor" : (context) => AppShell(child: EditorScreen()),
-        "/categories":  (context) => AppShell(child: CategoriesScreen()),
-        "/quizmode":        (context) => AppShell(child: QuizmodeScreen()),
-        }
+        routes: {
+          "/": (context) => const SplashScreen(),
+          "/home": (context) => AppShell(child: HomeScreen()),
+          "/editor": (context) => AppShell(child: EditorScreen()),
+          "/categories": (context) => AppShell(child: CategoriesScreen()),
+          "/quizmode": (context) => AppShell(child: QuizmodeScreen()),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name == '/category_detail') {
+            final category = settings.arguments as Category;
+            return MaterialPageRoute(
+              settings: settings,
+              builder: (context) => AppShell(child: CategoryDetailScreen(category: category)),
+            );
+          }
+          return null;
+        },
       ),
     );
   }
